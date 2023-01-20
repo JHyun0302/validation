@@ -16,7 +16,7 @@ public class MessageCodesResolverTest {
     } //new ObjectError("code.objectName", "code")
 
     @Test
-    void messageCodeReesolverField() {
+    void messageCodeResolverField() {
         String[] messageCodes = codesResolver.resolveMessageCodes("required", "item", "itemName", String.class);
         assertThat(messageCodes).containsExactly(
                 "required.item.itemName",
