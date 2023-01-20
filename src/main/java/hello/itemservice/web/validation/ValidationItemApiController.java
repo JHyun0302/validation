@@ -16,7 +16,7 @@ public class ValidationItemApiController {
 
     @PostMapping("/add")
     public Object addItem(@RequestBody @Validated ItemSaveForm form, BindingResult bindingResult) {
-        log.info("API 컨트롤러 호출"); //tpyeMissMatch한 경우 ItemSaveForm자체가 안 만들어져서 컨트롤러 자체가 안 만들어짐
+        log.info("API 컨트롤러 호출"); //typeMissMatch한 경우 ItemSaveForm자체가 안 만들어져서 컨트롤러 자체가 안 만들어짐
 
         if (bindingResult.hasErrors()) {
             log.info("검증 오류 발생 errors={}", bindingResult);
