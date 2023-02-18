@@ -25,7 +25,7 @@
 
     <form action="item.html" th:action th:object="${item}" method="post">
         <!--/*@GetMapping("/add")한 순간 errors == null, null이 containsKey하면 NullPointer... 예외 발생!*/-->
-        <!--/*따라서 ?. 을 통해 errors == null일때 예외대신 null이 반환되게 하는 문법임! - th:if에서 null은 실패로 처리됨 */-->
+        <!--/*따라서 ?. 을 통해 errors == null이면 예외대신 null이 반환되는 문법임! - th:if에서 null은 실패로 처리됨 */-->
         <div th:if="${errors?.containsKey('globalError')}">
             <p class="field-error" th:text="${errors['globalError']}"> 전체 오류 메시지</p>
         </div>
