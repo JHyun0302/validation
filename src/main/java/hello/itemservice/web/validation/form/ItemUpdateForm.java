@@ -5,6 +5,9 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * domain - Item 쪼개기(update)
+ */
 @Data
 public class ItemUpdateForm {
     @NotNull

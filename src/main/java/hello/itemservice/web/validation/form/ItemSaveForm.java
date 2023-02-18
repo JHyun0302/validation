@@ -6,6 +6,9 @@ import org.hibernate.validator.constraints.Range;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
+/**
+ * domain - Item 쪼개기(save)
+ */
 @Data
 public class ItemSaveForm {
     @NotNull
