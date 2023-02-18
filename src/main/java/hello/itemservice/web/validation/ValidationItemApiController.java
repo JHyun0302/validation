@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * API 방식: @Bean Validated
+ */
 @Slf4j
 @RestController
 @RequestMapping("/validation/api/items")
@@ -16,7 +19,7 @@ public class ValidationItemApiController {
 
     @PostMapping("/add")
     public Object addItem(@RequestBody @Validated ItemSaveForm form, BindingResult bindingResult) {
-        log.info("API 컨트롤러 호출"); //typeMissMatch한 경우 ItemSaveForm자체가 안 만들어져서 컨트롤러 자체가 안 만들어짐
+        log.info("API 컨트롤러 호출"); //typeMissMatch한 경우 ItemSaveForm자체가 안 만들어져서 컨트롤러 자체가 호출안됨!
 
         if (bindingResult.hasErrors()) {
             log.info("검증 오류 발생 errors={}", bindingResult);
