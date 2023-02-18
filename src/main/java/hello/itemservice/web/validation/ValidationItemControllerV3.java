@@ -52,7 +52,7 @@ public class ValidationItemControllerV3 {
             int resultPrice = item.getPrice() * item.getQuantity();
             if (resultPrice < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
-            }//reject는 obejcterror일 때 사용
+            }//ObejctError - @ScriptAssert 보다는 직접 작성해서 쓰기!
         }
 
         //검증에 실패하면 다시 입력 폼으로
@@ -68,17 +68,20 @@ public class ValidationItemControllerV3 {
         return "redirect:/validation/v3/items/{itemId}";
     }
 
+    /**
+     * Bean Validated - groups
+     * 상품 등록시에는 SaveCheck.class 사용
+     */
     @PostMapping("/add")
     public String addItemV2(@Validated(SaveCheck.class) @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes
             redirectAttributes) {
-        //@Validated 때문에 @NotBlank 같은 Bean Validation이 자동 적용됨
 
         //특정 필드가 아닌 복합 룰 검증
         if (item.getPrice() != null && item.getQuantity() != null) {
             int resultPrice = item.getPrice() * item.getQuantity();
             if (resultPrice < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
-            }//reject는 obejcterror일 때 사용
+            }
         }
 
         //검증에 실패하면 다시 입력 폼으로
@@ -101,6 +104,9 @@ public class ValidationItemControllerV3 {
         return "validation/v3/editForm";
     }
 
+    /**
+     * 검증기 추가: @Validated
+     */
     //    @PostMapping("/{itemId}/edit")
     public String editV1(@PathVariable Long itemId, @Validated @ModelAttribute Item item, BindingResult bindingResult) {
         //특정 필드가 아닌 복합 룰 검증
@@ -119,6 +125,10 @@ public class ValidationItemControllerV3 {
         return "redirect:/validation/v3/items/{itemId}";
     }
 
+    /**
+     * Bean Validated - groups
+     * 상품 등록시에는 UpdateCheck.class 사용
+     */
     @PostMapping("/{itemId}/edit")
     public String editV2(@PathVariable Long itemId, @Validated(UpdateCheck.class) @ModelAttribute Item item, BindingResult bindingResult) {
         //특정 필드가 아닌 복합 룰 검증
