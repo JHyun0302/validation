@@ -10,7 +10,10 @@ public class ItemServiceApplication { //implements WebMvcConfigurer
         SpringApplication.run(ItemServiceApplication.class, args);
     }
 
-    //글로벌 설정 - 모든 컨트롤러에 적용
+    /**
+     * @InitBinder: 해당 컨트롤러만 가능
+     * implements WebMvcConfigurer: 글로벌 설정
+     */
 /*    @Override
     public Validator getValidator() {
         return new ItemValidator();
