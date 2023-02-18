@@ -42,6 +42,9 @@ public class ValidationItemControllerV4 {
         return "validation/v4/addForm";
     }
 
+    /**
+     * ItemSaveForm을 Model에 저장 & @Validated
+     */
     @PostMapping("/add")
     public String addItem(@Validated @ModelAttribute("item") ItemSaveForm form, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
@@ -50,7 +53,7 @@ public class ValidationItemControllerV4 {
             int resultPrice = form.getPrice() * form.getQuantity();
             if (resultPrice < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
-            }//reject는 obejcterror일 때 사용
+            }
         }
 
         //검증에 실패하면 다시 입력 폼으로
@@ -78,6 +81,9 @@ public class ValidationItemControllerV4 {
         return "validation/v4/editForm";
     }
 
+    /**
+     * ItemUpdateForm을 Model에 저장 & @Validated
+     */
     @PostMapping("/{itemId}/edit")
     public String edit(@PathVariable Long itemId, @Validated @ModelAttribute("item") ItemUpdateForm form, BindingResult bindingResult) {
         //특정 필드가 아닌 복합 룰 검증
