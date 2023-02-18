@@ -33,15 +33,14 @@
                    th:errorclass="field-error"
                    class="form-control" placeholder="이름을 입력하세요">
             <div class="field-error" th:errors="*{itemName}"> 상품명 오류
-                <!--/*ControllerV2의 new FieldError에서 필드 이름 itemName 지정함. */-->
+                <!--/* th:errorclass -> error가 있으면  class=""에 추가함! */-->
             </div>
             <div>
                 <label for="price" th:text="#{label.item.price}">가격</label>
                 <input type="text" id="price" th:field="*{price}"
                        th:errorclass="field-error"
                        class="form-control" placeholder="가격을 입력하세요">
-                <div class="field-error" th:errors="*{price}"> 가격
-                    오류
+                <div class="field-error" th:errors="*{price}"> 가격 오류
                 </div>
             </div>
             <div>
@@ -49,8 +48,7 @@
                 <input type="text" id="quantity" th:field="*{quantity}"
                        th:errorclass="field-error"
                        class="form-control" placeholder="수량을 입력하세요">
-                <div class="field-error" th:errors="*{quantity}"> 수량
-                    오류
+                <div class="field-error" th:errors="*{quantity}"> 수량 오류
                 </div>
             </div>
 
